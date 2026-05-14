@@ -1,37 +1,22 @@
 import java.util.ArrayList;
 
-class Hand {
-    ArrayList<Card> cards;
+public class Hand {
+
+    private ArrayList<Card> cards;
 
     public Hand() {
-        cards = new ArrayList<Card>();
+        cards = new ArrayList<>();
     }
 
-    public void addCard(Card c) {
-        cards.add(c);
+    public ArrayList<Card> getCards() {
+        return cards;
     }
 
-    public void printHand() {
-        for (Card c : cards) {
-            System.out.println(c);
-        }
+    public void addCard(Card card) {
+        cards.add(card);
     }
 
-    public int getValue() {
-        int total = 0;
-
-        for (Card c : cards) {
-            String name = c.namei;
-
-            if (name.equals("Jack") || name.equals("Queen") || name.equals("King")) {
-                total = total + 10;
-            } else if (name.equals("Ace")) {
-                total = total + 11;
-            } else {
-                total = total + Integer.parseInt(name);
-            }
-        }
-
-        return total;
+    public Card removeCard(int index) {
+        return cards.remove(index);
     }
 }

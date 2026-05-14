@@ -21,7 +21,18 @@ public class Deck {
         }
     }
 
-    public void shuffle() {Collections.shuffle(cards);
+    public void shuffle() {
+        for (int i = 0; i < 100; i++) {
+
+            int card1 = (int)(Math.random() * 52);
+            int card2 = (int)(Math.random() * 52);
+
+            Card first = cards.get(card1);
+            Card second = cards.get(card2);
+
+            Card one = cards.get(card1);
+            Card two = cards.get(card2);
+        }
     }
 
     public Card drawCard() {
