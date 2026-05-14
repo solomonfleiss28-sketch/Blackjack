@@ -12,6 +12,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 
     Deck deck;
     Player player;
+    Player dealer;
 
     public BasicGameApp() {
         setUpGraphics();
@@ -20,6 +21,7 @@ public class BasicGameApp implements Runnable, KeyListener {
         deck.shuffle();
 
         player = new Player(deck);
+        dealer = new Player(deck);
 
         player.printInfo();
         System.out.println("Lets Play BlackJack!!!");
@@ -33,8 +35,61 @@ public class BasicGameApp implements Runnable, KeyListener {
     private void render() {
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         g.clearRect(0, 0, WIDTH, HEIGHT);
+        g.setColor(new Color(0, 120, 30));
+        g.fillRect(0, 0, WIDTH, HEIGHT);
+
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 30));
+        g.drawString("Blackjack (H = Hit, S = Stand)", 250, 50);
+        int x = 100;
+        int y = 200;
+
+
+        int dx = 100;
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.drawString("Dealer", 100, 80);
+        g.drawString("Score: " + dealer.getHandValue(), 100, 100);
+        for (Card c : dealer.hand.cards) {
+
+            g.drawRect(dx, 120, 80, 120);
+            g.drawString(c.namei, dx + 10, 140);
+            dx += 100;
+        }
+
+        int ex = 100;
+
+        g.drawString("Player", 100, 300);
+        g.drawString("Score: " + player.getHandValue(), 100, 320);
+
+        for (Card c : player.hand.cards) {
+            g.setColor(Color.WHITE);
+            g.fillRect(ex, 340, 80, 120);
+            g.setColor(Color.BLACK);
+            g.drawRect(ex, 340, 80, 120);
+            g.drawString(c.namei, ex + 10, 360);
+            ex += 100;
+        }
+
+
+
+
+        if (player.getHandValue() > 21) {
+            g.drawString("You Lost...", 200, 600);
+
+        } else if (dealer.getHandValue() > 21) {
+            g.drawString("Winner Winner Chicken Dinner", 200, 600);
+
+        } else if (player.getHandValue() > dealer.getHandValue() && dealer.getHandValue() >= 17) {
+            g.drawString("Winner Winner Chicken Dinner!", 400, 600);
+
+        } else if (dealer.getHandValue() >= 17 && dealer.getHandValue() > player.getHandValue()) {
+            g.drawString("You Lost...", 400, 600);
+        }
         g.dispose();
         bufferStrategy.show();
+
+
     }
 
 
@@ -102,11 +157,24 @@ public class BasicGameApp implements Runnable, KeyListener {
 
         if (e.getKeyChar() == 'h') {
             player.hit(deck);
-            player.printInfo();
         }
 
         if (e.getKeyChar() == 's') {
-            System.out.println("Final Score: " + player.getHandValue());
+
+            while (dealer.getHandValue() < 17) {
+                dealer.hit(deck);
+                if (player.getHandValue() > 21) {
+                    System.out.println("Player Busts! Dealer Wins.");
+                }
+                if (player.getHandValue() == dealer.getHandValue()){
+                    System.out.println("You draw!");
+                }
+            }
+
+            int p = player.getHandValue();
+            int d = dealer.getHandValue();
+
+
         }
     }
 public void keyReleased(KeyEvent e) {}
