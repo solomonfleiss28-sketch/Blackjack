@@ -19,4 +19,16 @@ public class Hand {
     public Card removeCard(int index) {
         return cards.remove(index);
     }
+
+    public int getValue() {
+        int total = 0;
+        int i;
+
+        for (i = 0; i < cards.size(); i++) {
+            Card c = cards.get(i);
+            total = total + c.value;
+        }
+
+        return total;
+    }
 }

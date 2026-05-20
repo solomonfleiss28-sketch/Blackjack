@@ -1,28 +1,24 @@
 public class Player {
 
-    Hand hand;
+    public Hand hand;
 
-    public Player(Deck deck) {
+    public Player() {
         hand = new Hand();
-
-        hand.addCard(deck.drawCard());
-        hand.addCard(deck.drawCard());
-    }
-
-    public void hit(Deck deck) {
-        hand.addCard(deck.drawCard());
-    }
-
-    public void stand() {
-        System.out.println("Stand.");
     }
 
     public int getHandValue() {
         return hand.getValue();
     }
 
+    public void addCard(Card card) {
+        hand.addCard(card);
+    }
+
+    public void hit(Deck deck) {
+        hand.addCard(deck.drawCard());
+    }
+
     public void printInfo() {
-        hand.printHand();
-        System.out.println("Value: " + hand.getValue());
+        System.out.println(hand.getCards());
     }
 }
