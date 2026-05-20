@@ -22,17 +22,15 @@ public class Deck {
     }
 
     public void shuffle() {
-        for (int i = 0; i < 100; i++) {
+        ArrayList<Card> shuffled = new ArrayList<>();
 
-            int card1 = (int)(Math.random() * 52);
-            int card2 = (int)(Math.random() * 52);
-
-            Card first = cards.get(card1);
-            Card second = cards.get(card2);
-
-            Card one = cards.get(card1);
-            Card two = cards.get(card2);
+        while (cards.size() > 0) {
+            int randomIndex = (int)(Math.random() * cards.size());
+            shuffled.add(cards.get(randomIndex));
+            cards.remove(randomIndex);
         }
+
+        cards = shuffled;
     }
 
     public Card drawCard() {

@@ -24,6 +24,11 @@ public class BasicGameApp implements Runnable, KeyListener {
 
         player = new Player();
         dealer = new Player();
+        player.hit(deck);
+        player.hit(deck);
+
+        dealer.hit(deck);
+        dealer.hit(deck);
 
         player.printInfo();
         System.out.println("Lets Play BlackJack!!!");
@@ -59,10 +64,16 @@ public class BasicGameApp implements Runnable, KeyListener {
 
         x = 100;
         for (i = 0; i < dealerCards.size(); i++) {
-            Card c = dealerCards.get(i);
+            Card card = dealerCards.get(i);
+            g.setColor(Color.WHITE);
+            g.fillRect(x, 120, 80, 120);
 
+            g.setColor(Color.BLACK);
             g.drawRect(x, 120, 80, 120);
-            g.drawString(c.namei, x + 10, 140);
+
+            g.drawString(card.namei, x + 10, 140);
+
+
 
             x = x + 100;
         }
@@ -72,7 +83,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 
         x = 100;
         for (i = 0; i < playerCards.size(); i++) {
-            Card c = playerCards.get(i);
+            Card card = playerCards.get(i);
 
             g.setColor(Color.WHITE);
             g.fillRect(x, 340, 80, 120);
@@ -80,7 +91,7 @@ public class BasicGameApp implements Runnable, KeyListener {
             g.setColor(Color.BLACK);
             g.drawRect(x, 340, 80, 120);
 
-            g.drawString(c.namei, x + 10, 360);
+            g.drawString(card.namei, x + 10, 360);
 
             x = x + 100;
         }
@@ -167,8 +178,11 @@ public class BasicGameApp implements Runnable, KeyListener {
     public void keyPressed(KeyEvent e) {
 
         if (e.getKeyChar() == 'h') {
-            player.hit(deck);
+            if (player.getHandValue() < 21) {
+                player.hit(deck);
+            }
         }
+
 
         if (e.getKeyChar() == 's') {
 
@@ -177,10 +191,11 @@ public class BasicGameApp implements Runnable, KeyListener {
                 if (player.getHandValue() > 21) {
                     System.out.println("Player Busts! Dealer Wins.");
                 }
+                    }
                 if (player.getHandValue() == dealer.getHandValue()){
                     System.out.println("You draw!");
                 }
-            }
+
 
             int p = player.getHandValue();
             int d = dealer.getHandValue();
