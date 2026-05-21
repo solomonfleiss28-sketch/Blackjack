@@ -14,12 +14,16 @@ public class Deck {
                 "9", "10", "Jack", "Queen", "King"
         };
 
-        for (String suit : suits) {
-            for (String name : names) {
-                cards.add(new Card(suit, name));
-            }
-        }
-    }
+        int i = 0;
+        while (i < suits.length) {
+            String suit = suits[i];
+            int j = 0;
+            while (j < names.length) {
+                String name = names[j];
+                Card card = new Card(suit, name);
+                cards.add(card);
+                j = j + 1;}
+            i = i + 1;}}
 
     public void shuffle() {
         ArrayList<Card> shuffled = new ArrayList<>();

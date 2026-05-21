@@ -9,9 +9,9 @@ public class Card {
         namei = name;
 
         if (name==("Ace")) {value = 1;}
-        else if (name==("Jack")) {value = 11;}
-        else if (name==("Queen" )) {value = 12;}
-        else if (name==("King")) {value = 13;}
+        else if (name==("Jack")) {value = 10;}
+        else if (name==("Queen" )) {value = 10;}
+        else if (name==("King")) {value = 10;}
         else {value = Integer.parseInt(name);}
     }
     public String toString() {
