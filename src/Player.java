@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class Player {
 
-    public Hand hand;
+    private Hand hand;
 
     public Player() {
         hand = new Hand();
@@ -16,6 +18,10 @@ public class Player {
 
     public void hit(Deck deck) {
         hand.addCard(deck.drawCard());
+    }
+
+    public ArrayList<Card> getCards() {
+        return hand.getCards(); // controlled access
     }
 
     public void printInfo() {

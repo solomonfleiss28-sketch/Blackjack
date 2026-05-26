@@ -1,20 +1,30 @@
 public class Card {
 
-    String suite;
-    String namei;
-    int value;
+    private String suit;
+    private String name;
+    private int value;
 
     public Card(String suit, String name) {
-        suite = suit;
-        namei = name;
+        this.suit = suit;
+        this.name = name;
 
-        if (name==("Ace")) {value = 1;}
-        else if (name==("Jack")) {value = 10;}
-        else if (name==("Queen" )) {value = 10;}
-        else if (name==("King")) {value = 10;}
+        if (name.equals("Ace")) {value = 1;}
+        else if (name.equals("Jack")) {value = 10;}
+        else if (name.equals("Queen")) {value = 10;}
+        else if (name.equals("King")) {value = 10;}
         else {value = Integer.parseInt(name);}
     }
+    public String getSuit() {
+        return suit;
+    }
+    public String getName() {
+        return name;
+    }
+    public int getValue() {
+        return value;
+    }
+
     public String toString() {
-        return namei + " of " + suite;
+        return name + " of " + suit;
     }
 }

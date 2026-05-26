@@ -22,13 +22,13 @@ public class Hand {
 
     public int getValue() {
         int total = 0;
-        int i;
 
-        for (i = 0; i < cards.size(); i++) {
+        for (int i = 0; i < cards.size(); i++) {
             Card c = cards.get(i);
-            total = total + c.value;
+            total = total + c.getValue(); // use getter
         }
 
         return total;
     }
-}
+
+    }

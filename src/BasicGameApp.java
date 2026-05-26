@@ -1,4 +1,4 @@
-// Graphics Libraries
+// Graphics Librarie
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
@@ -51,8 +51,8 @@ public class BasicGameApp implements Runnable, KeyListener {
         g.setFont(new Font("Arial", Font.BOLD, 30));
         g.drawString("Blackjack (H = Hit, S = Stand)", 250, 50);
 
-        ArrayList<Card> dealerCards = dealer.hand.getCards();
-        ArrayList<Card> playerCards = player.hand.getCards();
+        ArrayList<Card> dealerCards = dealer.getCards();
+        ArrayList<Card> playerCards = player.getCards();
 
         int i;
         int x;
@@ -71,7 +71,7 @@ public class BasicGameApp implements Runnable, KeyListener {
             g.setColor(Color.BLACK);
             g.drawRect(x, 120, 80, 120);
 
-            g.drawString(card.namei, x + 10, 140);
+            g.drawString(card.getName(), x + 10, 140);
 
 
 
@@ -91,7 +91,7 @@ public class BasicGameApp implements Runnable, KeyListener {
             g.setColor(Color.BLACK);
             g.drawRect(x, 340, 80, 120);
 
-            g.drawString(card.namei, x + 10, 360);
+            g.drawString(card.getName(), x + 10, 360);
 
             x = x + 100;
         }
