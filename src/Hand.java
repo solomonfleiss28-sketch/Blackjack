@@ -26,6 +26,10 @@ public class Hand {
         for (int i = 0; i < cards.size(); i++) {
             Card c = cards.get(i);
             total = total + c.getValue(); // use getter
+            if(cards.get(i).getValue()==11){
+                System.out.println("Found an Ace");
+
+            }
         }
 
         return total;

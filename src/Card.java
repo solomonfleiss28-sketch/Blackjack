@@ -8,7 +8,7 @@ public class Card {
         this.suit = suit;
         this.name = name;
 
-        if (name.equals("Ace")) {value = 1;}
+        if (name.equals("Ace")) {value = 11;}
         else if (name.equals("Jack")) {value = 10;}
         else if (name.equals("Queen")) {value = 10;}
         else if (name.equals("King")) {value = 10;}
