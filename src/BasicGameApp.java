@@ -181,10 +181,7 @@ public class BasicGameApp implements Runnable, KeyListener {
             if (player.getHandValue() < 21) {
                 player.hit(deck);
             }
-            if(player.getHandValue()>11){
-
-
-            }
+           
 
 
         }

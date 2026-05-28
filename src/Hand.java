@@ -24,11 +24,13 @@ public class Hand {
         int total = 0;
 
         for (int i = 0; i < cards.size(); i++) {
-            Card c = cards.get(i);
-            total = total + c.getValue(); // use getter
-            if(cards.get(i).getValue()==11){
-                System.out.println("Found an Ace");
 
+            Card c = cards.get(i);
+
+            total = total + c.getValue();
+
+            if (total > 21 || c.getName().equals("Ace")) {
+                total = total - 10;
             }
         }
 
